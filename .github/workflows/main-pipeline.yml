@@ -15,7 +15,7 @@ on:
 jobs:
   Build:
     name: Build
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/Build.yml
     secrets: inherit 
     #https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idsecretsinherit
 
