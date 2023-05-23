@@ -34,8 +34,7 @@ jobs:
     uses: ./.github/workflows/IAC.yml
     secrets: inherit
 
-
-  dast:
+  DAST:
     needs: Build
     name: DAST Scan
     uses: ./.github/workflows/dast.yml
