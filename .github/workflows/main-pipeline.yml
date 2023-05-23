@@ -1,0 +1,42 @@
+name: CI / CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 0 * * 5'
+  
+jobs:
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+    secrets: inherit 
+    #https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idsecretsinherit
+
+  SCA:
+    needs: build
+    name: SCA
+    uses: ./.github/workflows/SCA.yml
+    secrets: inherit
+
+  SAST:
+    needs: build
+    name: SAST
+    uses: ./.github/workflows/SAST.yml
+    secrets: inherit
+
+  IAC:
+    name: KICKS
+    uses: ./.github/workflows/IAC.yml
+    secrets: inherit
+
+
+  dast:
+    needs: build
+    name: DAST Scan
+    uses: ./.github/workflows/dast.yml
+    secrets: inherit
+ 
