@@ -1,11 +1,7 @@
-name: "OWASP dependency scanner"
+name: OWASP dependency scanner
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
+  workflow_call:
 
 jobs:
   analyze:
