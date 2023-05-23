@@ -1,0 +1,29 @@
+name: Checkov
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "main" ]
+
+jobs:
+  config-scan:
+    runs-on: ubuntu-latest
+    name: iac configuration scan
+    continue-on-error: true
+    steps:
+      - name: checkout code
+        uses: actions/checkout@master
+        
+      - name: checkov iac scan
+        if: always()
+        run: |
+          pip3 install checkov
+          checkov --directory . -o sarif
+          
+      - name: upload checkov scan results to github security tab
+        uses: github/codeql-action/upload-sarif@v1
+        if: always()
+        with:
+          sarif_file: 'results.sarif'
