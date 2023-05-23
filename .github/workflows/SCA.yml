@@ -6,10 +6,7 @@ on:
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-
+    
     name: owasp-check
     steps:
       - uses: actions/checkout@v3
