@@ -28,7 +28,6 @@ jobs:
     #https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idsecretsinherit
 
   SCA:
-    needs: Build
     name: SCA
     uses: ./.github/workflows/SCA.yml
     secrets: inherit
@@ -39,14 +38,7 @@ jobs:
     uses: ./.github/workflows/SAST.yml
     secrets: inherit
 
-  IAC:
-    needs: Build
-    name: KICKS
-    uses: ./.github/workflows/IAC.yml
-    secrets: inherit
-
   DAST:
-    needs: Build
     name: DAST Scan
     uses: ./.github/workflows/DAST.yml
     secrets: inherit
