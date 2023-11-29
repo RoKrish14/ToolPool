@@ -16,9 +16,9 @@ jobs:
     name: CodeQL
     runs-on: ubuntu-latest
     permissions:
-      actions: read
+      actions: none
       contents: read
-      security-events: write
+      security-events: none
     
     strategy:
       fail-fast: false
@@ -81,9 +81,9 @@ jobs:
     needs: [CodeQL]
     runs-on: ubuntu-latest
     permissions:
-      actions: read
+      actions: none
       contents: read
-      security-events: write
+      security-events: none
     
     steps:
     - name: Checkout repository
