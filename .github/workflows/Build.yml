@@ -15,10 +15,10 @@ jobs:
   #name of job, free choice, could also give a name
   build:
     permissions:
-      packages: write
-      actions: read
+      packages: read
+      actions: none
       contents: read
-      security-events: write
+      security-events: none
     #runner
     runs-on: ubuntu-latest
     steps:
